@@ -1,0 +1,20 @@
+.not-found {
+
+   .hero {
+      .hero-container {
+         background-image: url("#{$baseurl}/img/sgraffito-studio-2.jpg");
+      }
+
+      .title-container {
+         text-align: center;
+         h2 {
+            color: $black;
+            border-color: $black;
+         }
+      }
+
+      .page-container {
+         background-color: $main;
+      }
+   }
+}
