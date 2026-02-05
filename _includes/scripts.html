@@ -1,21 +1,19 @@
 <script>
-   // Initiate Smooth Scroll
-   smoothScroll.init();
+   // Initiate Smooth Scroll (only if library is loaded)
+   if (typeof smoothScroll !== 'undefined') {
+      smoothScroll.init();
+   }
 
    // Email copy-to-clipboard functionality
-   // On desktop: copies email to clipboard and shows "Copied" tooltip
-   // On mobile: falls back to mailto: link behavior
-   (function() {
-      var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      var emailLinks = document.querySelectorAll('.email-copy');
+   // Desktop shows .email-copy span (copies to clipboard)
+   // Mobile shows .email-mailto link (opens email client)
+   document.addEventListener('DOMContentLoaded', function() {
+      var emailElements = document.querySelectorAll('.email-copy');
 
-      emailLinks.forEach(function(emailLink) {
-         if (isTouchDevice) return; // On mobile, let mailto: work normally
-
-         emailLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            var email = emailLink.getAttribute('data-email');
-            var tooltip = emailLink.parentElement.querySelector('.email-tooltip');
+      emailElements.forEach(function(el) {
+         el.addEventListener('click', function() {
+            var email = el.getAttribute('data-email');
+            var tooltip = el.parentElement.querySelector('.email-tooltip');
 
             navigator.clipboard.writeText(email).then(function() {
                if (tooltip) {
@@ -29,7 +27,7 @@
             });
          });
       });
-   })();
+   });
 
    // Google Analytics
 

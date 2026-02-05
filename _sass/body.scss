@@ -271,10 +271,21 @@ section {
    white-space: nowrap;
 }
 
-// Email copy-to-clipboard tooltip
+// Email copy-to-clipboard (desktop) vs mailto (mobile)
+// Desktop: show .email-copy-wrapper with tooltip, hide .email-mailto
+// Mobile: hide .email-copy-wrapper, show .email-mailto
+
 .email-copy-wrapper {
+   display: none; // Hidden on mobile by default
    position: relative;
-   display: inline-block;
+
+   @include media($for-tablet-up) {
+      display: inline-block; // Show on desktop
+   }
+
+   .email-copy {
+      cursor: pointer;
+   }
 
    .email-tooltip {
       display: none;
@@ -293,23 +304,21 @@ section {
       pointer-events: none;
 
       &.copied {
-         background-color: $yellow;
-         color: $black;
+         background-color: $black;
+         color: $white;
       }
    }
 
-   // Only show tooltip on desktop (non-touch devices)
+   &:hover .email-tooltip {
+      display: block;
+   }
+}
+
+.email-mailto {
+   display: inline; // Show on mobile by default
+
    @include media($for-tablet-up) {
-      &:hover .email-tooltip {
-         display: block;
-      }
-   }
-
-   // Hide tooltip on mobile
-   @include media($for-phone-only) {
-      .email-tooltip {
-         display: none !important;
-      }
+      display: none; // Hide on desktop
    }
 }
 
