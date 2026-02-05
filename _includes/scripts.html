@@ -2,6 +2,35 @@
    // Initiate Smooth Scroll
    smoothScroll.init();
 
+   // Email copy-to-clipboard functionality
+   // On desktop: copies email to clipboard and shows "Copied" tooltip
+   // On mobile: falls back to mailto: link behavior
+   (function() {
+      var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      var emailLinks = document.querySelectorAll('.email-copy');
+
+      emailLinks.forEach(function(emailLink) {
+         if (isTouchDevice) return; // On mobile, let mailto: work normally
+
+         emailLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            var email = emailLink.getAttribute('data-email');
+            var tooltip = emailLink.parentElement.querySelector('.email-tooltip');
+
+            navigator.clipboard.writeText(email).then(function() {
+               if (tooltip) {
+                  tooltip.textContent = 'Copied';
+                  tooltip.classList.add('copied');
+                  setTimeout(function() {
+                     tooltip.textContent = 'Click to copy';
+                     tooltip.classList.remove('copied');
+                  }, 2000);
+               }
+            });
+         });
+      });
+   })();
+
    // Google Analytics
 
 </script>

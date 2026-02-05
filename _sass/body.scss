@@ -271,6 +271,48 @@ section {
    white-space: nowrap;
 }
 
+// Email copy-to-clipboard tooltip
+.email-copy-wrapper {
+   position: relative;
+   display: inline-block;
+
+   .email-tooltip {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 0.5em;
+      padding: 0.25em 0.5em;
+      background-color: $black;
+      color: $white;
+      font-size: 0.85em;
+      font-weight: 400;
+      white-space: nowrap;
+      border-radius: $radius;
+      pointer-events: none;
+
+      &.copied {
+         background-color: $yellow;
+         color: $black;
+      }
+   }
+
+   // Only show tooltip on desktop (non-touch devices)
+   @include media($for-tablet-up) {
+      &:hover .email-tooltip {
+         display: block;
+      }
+   }
+
+   // Hide tooltip on mobile
+   @include media($for-phone-only) {
+      .email-tooltip {
+         display: none !important;
+      }
+   }
+}
+
 
 
 
