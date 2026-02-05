@@ -1,6 +1,33 @@
 <script>
-   // Initiate Smooth Scroll
-   smoothScroll.init();
+   // Initiate Smooth Scroll (only if library is loaded)
+   if (typeof smoothScroll !== 'undefined') {
+      smoothScroll.init();
+   }
+
+   // Email copy-to-clipboard functionality
+   // Desktop shows .email-copy span (copies to clipboard)
+   // Mobile shows .email-mailto link (opens email client)
+   document.addEventListener('DOMContentLoaded', function() {
+      var emailElements = document.querySelectorAll('.email-copy');
+
+      emailElements.forEach(function(el) {
+         el.addEventListener('click', function() {
+            var email = el.getAttribute('data-email');
+            var tooltip = el.parentElement.querySelector('.email-tooltip');
+
+            navigator.clipboard.writeText(email).then(function() {
+               if (tooltip) {
+                  tooltip.textContent = 'Copied';
+                  tooltip.classList.add('copied');
+                  setTimeout(function() {
+                     tooltip.textContent = 'Click to copy';
+                     tooltip.classList.remove('copied');
+                  }, 2000);
+               }
+            });
+         });
+      });
+   });
 
    // Google Analytics
 
