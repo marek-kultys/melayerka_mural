@@ -109,17 +109,6 @@ main {
       }
    }
 
-   .video-media {
-      height: auto; /* Could also use width: 100%; */
-      width: 100%;
-      object-fit: cover;
-      @include media($for-phone-only) {
-         position: relative;
-         width: 113%;
-         left: -5%;
-      }
-   }
-
    .contact-wrapper {
       margin-top: 2em;
       margin-bottom: 2em;
