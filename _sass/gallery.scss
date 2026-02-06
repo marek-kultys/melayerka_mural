@@ -60,7 +60,7 @@
 
 // IMAGES
    .gallery-block {
-      margin-bottom: 9.6em;
+      margin-bottom: 8em;
    }
 
    .gallery-block-last {
@@ -85,9 +85,9 @@
          display: block;
          width: 100%;
          margin-bottom: 2.2em;
-         &:last-of-type {
-            margin-bottom: 0em;
-         }
+         // &:last-of-type {
+         //    margin-bottom: 0em;
+         // }
       }
    }
 }
