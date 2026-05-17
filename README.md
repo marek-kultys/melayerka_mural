@@ -1,6 +1,6 @@
 # Trowel & Lime — The Rare Art of Sgraffito
 
-A Jekyll-based website for Trowel & Lime, showcasing traditional sgraffito mural art.
+A Jekyll-based website for Trowel & Lime — Mela Yerka's mural business — showcasing traditional sgraffito mural art.
 
 ## Running locally
 
@@ -12,10 +12,6 @@ A Jekyll-based website for Trowel & Lime, showcasing traditional sgraffito mural
 ### Setup
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/trowel-and-lime.git
-   cd trowel-and-lime
-   ```
 
 2. Install dependencies:
    ```bash
